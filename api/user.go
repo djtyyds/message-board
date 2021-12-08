@@ -25,6 +25,11 @@ func register(c *gin.Context) {
 		tool.RespErrorWithData(c, "该用户名已存在")
 		return
 	}
+	bool := service.IsPasswordPlausible(user)
+	if !bool {
+		tool.RespErrorWithData(c, "密码必须大于6位数")
+		return
+	}
 	err = service.Register(user)
 	if err != nil {
 		fmt.Println("register err")

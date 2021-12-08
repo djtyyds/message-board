@@ -17,6 +17,12 @@ func IsRepeatName(username string) (bool, error) {
 	}
 	return true, nil
 }
+func IsPasswordPlausible(user model.User) bool {
+	if len(user.Password) < 8 {
+		return false
+	}
+	return true
+}
 func Register(user model.User) error {
 	err := dao.InsertUser(user)
 	return err
