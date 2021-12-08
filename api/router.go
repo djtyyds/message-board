@@ -13,4 +13,11 @@ func InitEngine() {
 		userGroup.Use(auth)
 		userGroup.POST("/ChangePassword", ChangePassword) //修改密码
 	}
+	postGroup := en.Group("/post")
+	{
+		postGroup.Use(auth)
+		postGroup.POST("/", AddPost) //发布新留言
+		postGroup.POST("/:post_id")  //修改留言
+
+	}
 }
