@@ -23,3 +23,15 @@ func SelectPost() ([]model.Post, error) {
 	}
 	return posts, nil
 }
+func SelectPostById(postId int) (model.Post, error) {
+	var post model.Post
+	row := DB.QueryRow("SELECT id, username, txt, post_time, update_time, comment_num FROM post WHERE id = ? ", postId)
+	if row.Err() != nil {
+		return post, row.Err()
+	}
+	err := row.Scan(&post.Id, &post.Username, &post.Txt, &post.PostTime, &post.UpdateTime, &post.CommentNum)
+	if err != nil {
+		return post, err
+	}
+	return post, nil
+}

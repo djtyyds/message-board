@@ -12,3 +12,6 @@ func AddPost(post model.Post) error {
 func GetPosts() ([]model.Post, error) {
 	return dao.SelectPost()
 }
+func GetPostById(PostId int) (model.Post, error) {
+	return dao.SelectPostById(PostId)
+}
