@@ -20,6 +20,7 @@ func InitEngine() {
 		postGroup.POST("/:post_id")            //修改留言
 		postGroup.GET("/", BriefPost)          //查看全部留言
 		postGroup.GET("/:post_id", PostDetail) //查看一条留言详细信息和其下属评论
+		postGroup.DELETE("/:post_id")          //删除留言
 
 	}
 	commentGroup := en.Group("/comment")
