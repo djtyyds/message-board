@@ -21,5 +21,10 @@ func InitEngine() {
 		postGroup.GET("/", BriefPost) //查看全部留言
 
 	}
+	commentGroup := en.Group("/comment")
+	{
+		commentGroup.Use(auth)
+		commentGroup.POST("/AddComment", AddCommit) //添加评论
+	}
 	en.Run()
 }
