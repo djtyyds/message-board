@@ -16,8 +16,10 @@ func InitEngine() {
 	postGroup := en.Group("/post")
 	{
 		postGroup.Use(auth)
-		postGroup.POST("/", AddPost) //发布新留言
-		postGroup.POST("/:post_id")  //修改留言
+		postGroup.POST("/", AddPost)  //发布新留言
+		postGroup.POST("/:post_id")   //修改留言
+		postGroup.GET("/", BriefPost) //查看全部留言
 
 	}
+	en.Run()
 }

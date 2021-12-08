@@ -27,3 +27,12 @@ func AddPost(c *gin.Context) {
 	}
 	tool.RespSuccessful(c)
 }
+func BriefPost(c *gin.Context) {
+	post, err := service.GetPosts()
+	if err != nil {
+		fmt.Println("get posts err:", err)
+		tool.RespInternalError(c)
+		return
+	}
+	tool.RespSuccessfulWithData(c, post)
+}

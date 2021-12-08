@@ -20,3 +20,9 @@ func RespSuccessful(c *gin.Context) {
 		"info": "成功！",
 	})
 }
+func RespSuccessfulWithData(c *gin.Context, data interface{}) {
+	c.JSON(http.StatusOK, gin.H{
+		"info": "成功",
+		"data": data,
+	})
+}

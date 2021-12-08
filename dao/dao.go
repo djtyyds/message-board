@@ -13,5 +13,4 @@ func InitDB() {
 		panic(err)
 	}
 	DB = db
-
 }
