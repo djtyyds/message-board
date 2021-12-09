@@ -8,4 +8,5 @@ type Comment struct {
 	Txt         string
 	Username    string
 	CommentTime time.Time
+	Praise      int
 }
