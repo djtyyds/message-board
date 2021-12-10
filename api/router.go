@@ -26,9 +26,10 @@ func InitEngine() {
 	commentGroup := en.Group("/comment")
 	{
 		commentGroup.Use(auth)
-		commentGroup.POST("/addComment", AddCommit)         //添加评论
-		commentGroup.DELETE("/:comment_id")                 //删除评论
-		commentGroup.POST("/addCommentPraise", LikeComment) //点赞评论
+		commentGroup.POST("/addComment", AddCommit)                       //添加评论
+		commentGroup.DELETE("/:comment_id")                               //删除评论
+		commentGroup.POST("/addCommentPraise", LikeComment)               //点赞评论
+		commentGroup.POST("addCommentFromComment", AddCommentFromComment) //评论中加评论
 	}
 	en.Run()
 }
