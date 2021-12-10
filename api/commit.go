@@ -61,16 +61,29 @@ func AddCommentFromComment(c *gin.Context) {
 	iCommentId, _ := c.Get("comment_id")
 	commentId := iCommentId.(int)
 	txt := c.PostForm("txt")
-	comment := model.Comment{
+	addComment := model.Comment{
 		Id:          commentId,
 		Txt:         txt,
 		Username:    username,
 		CommentTime: time.Now(),
 	}
-	err := service.AddCommentFromComment(commentId, comment)
+	comment, err := service.GetCommentById(commentId)
+	root := model.Node{
+		Left: nil,
+		Data: comment,
+	}
+	err = service.AddCommentFromComment(commentId, comment)
 	if err != nil {
 		fmt.Println("add comment err:", err)
 		tool.RespInternalError(c)
 	}
+	a := model.Node{
+		Left: nil,
+		Data: addComment,
+	}
+	root.Left = &a
 	tool.RespSuccessful(c)
+}
+func ShowCommentTrees(c *gin.Context) {
+
 }

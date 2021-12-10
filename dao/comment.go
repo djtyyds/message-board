@@ -42,3 +42,7 @@ func UpdateCommentPraise(comment model.Comment) error {
 	_, err := DB.Exec("UPDATE comment SET comment_praise = ? WHENEVER comment_id = ?", comment.Praise, comment.Id)
 	return err
 }
+func AddCommentFromComment(commentId int, comment model.Comment) error {
+	_, err := DB.Exec("INSERT INTO comment(username, txt, comment_time, post_id) values(?, ?, ?, ?) WHENEVER comment_id = ? ", comment.Username, comment.Txt, comment.CommentTime, comment.PostId, commentId)
+	return err
+}
