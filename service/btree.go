@@ -13,7 +13,7 @@ func NewNode(left *Node) *Node {
 	return &Node{left, nil}
 }
 
-func (node *Node) Print() {
+func (node *Node) Print() { //输出
 	fmt.Print(node.Data, " ")
 }
 func (node *Node) SetData(comment interface{}) { //给节点赋值
