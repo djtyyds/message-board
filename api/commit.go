@@ -55,3 +55,6 @@ func LikeComment(c *gin.Context) {
 	}
 	tool.RespSuccessful(c)
 }
+func AddCommentFromComment() {
+
+}
