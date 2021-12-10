@@ -17,3 +17,6 @@ func GetCommentById(commentID int) (model.Comment, error) {
 func AddCommentPraise(comment model.Comment) error {
 	return dao.UpdateCommentPraise(comment)
 }
+func AddCommentFromComment(commentId int, comment model.Comment) error {
+	return dao.AddCommentFromComment(commentId, comment)
+}

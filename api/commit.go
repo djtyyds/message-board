@@ -55,6 +55,22 @@ func LikeComment(c *gin.Context) {
 	}
 	tool.RespSuccessful(c)
 }
-func AddCommentFromComment() {
-
+func AddCommentFromComment(c *gin.Context) {
+	iUsername, _ := c.Get("username")
+	username := iUsername.(string)
+	iCommentId, _ := c.Get("comment_id")
+	commentId := iCommentId.(int)
+	txt := c.PostForm("txt")
+	comment := model.Comment{
+		Id:          commentId,
+		Txt:         txt,
+		Username:    username,
+		CommentTime: time.Now(),
+	}
+	err := service.AddCommentFromComment(commentId, comment)
+	if err != nil {
+		fmt.Println("add comment err:", err)
+		tool.RespInternalError(c)
+	}
+	tool.RespSuccessful(c)
 }
