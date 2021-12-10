@@ -83,16 +83,5 @@ func AddCommentFromComment(c *gin.Context) {
 	a := service.NewNode(nil)
 	a.SetData(addComment)
 	root.Left = a
-	tool.RespSuccessful(c)
-}
-func ShowCommentTrees(c *gin.Context) {
-	iCommentId, _ := c.Get("comment_id")
-	commentId := iCommentId.(int)
-	_, err := service.GetCommentById(commentId)
-	if err != nil {
-		fmt.Println("get comment err:", err)
-		tool.RespInternalError(c)
-		return
-	}
-
+	tool.RespSuccessfulWithData(c, root.PreOrder)
 }
